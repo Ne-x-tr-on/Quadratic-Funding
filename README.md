@@ -32,8 +32,9 @@ cd Quadratic-Funding
 ```
 
 # Run the App
+```bash
 cargo run
-
+```
 ## Example Interaction
 
 - Enter number of contributors: 3
