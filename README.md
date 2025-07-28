@@ -36,8 +36,8 @@ cargo run
 
 ## Example Interaction
 
-Enter number of contributors: 3
-Enter contribution 1: 100
-Enter contribution 2: 25
-Enter contribution 3: 49
+- Enter number of contributors: 3
+- Enter contribution 1: 100
+- Enter contribution 2: 25
+- Enter contribution 3: 49
 
