@@ -2,7 +2,7 @@ use std::f64;
 use std::io;
 
 fn main() {
-    println!("📊 Quadratic Funding Simulator (Rust)");
+    println!("Quadratic Funding Simulator (Rust)");
 
     // Get number of donors
     let mut input = String::new();
@@ -27,7 +27,7 @@ fn main() {
     let total_funding = total_donated + matching_fund;
 
     println!("\n--- Summary ---");
-    println!("💰 Total Donated: ${:.2}", total_donated);
-    println!("🔁 Matching Fund (QF): ${:.2}", matching_fund);
-    println!("📦 Total Funding Available: ${:.2}", total_funding);
+    println!("Total Donated: ${:.2}", total_donated);
+    println!("Matching Fund (QF): ${:.2}", matching_fund);
+    println!("Total Funding Available: ${:.2}", total_funding);
 }
