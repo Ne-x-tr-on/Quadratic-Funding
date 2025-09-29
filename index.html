@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadratic Finance Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #4e54c8;
+            --secondary: #8f94fb;
+            --accent: #ff6b6b;
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --success: #2ecc71;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--dark);
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo i {
+            font-size: 28px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .hero {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+        }
+
+        .btn-accent:hover {
+            background: #ff5252;
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 40px 0 30px;
+            color: white;
+            font-size: 32px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-header {
+            padding: 20px;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-title {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .project-category {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .project-body {
+            padding: 20px;
+        }
+
+        .project-description {
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .project-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #777;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #eee;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: var(--success);
+            border-radius: 10px;
+        }
+
+        .funding-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+
+        .funding-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+
+        .funding-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .calculator {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .calculator-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+
+        .calc-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .calc-result {
+            background: var(--light);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .result-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+
+        .explanation {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-top: 40px;
+        }
+
+        .explanation h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .explanation p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: white;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .funding-form, .calc-inputs {
+                grid-template-columns: 1fr;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>
+                <span>Quadratic Finance</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">How It Works</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <h1>Democratizing Funding with Quadratic Finance</h1>
+            <p>Quadratic funding is a revolutionary mechanism that allocates matching funds to projects based on the number of contributors rather than the amount contributed, creating a more democratic and efficient funding system.</p>
+            <a href="#" class="btn">Explore Projects</a>
+        </section>
+
+        <h2 class="section-title">Featured Projects</h2>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">Open Source Education</div>
+                    <div class="project-category">Education</div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">Creating free, open-source educational resources for underserved communities worldwide.</p>
+                    <div class="project-stats">
+                        <div class="stat">
+                            <div class="stat-value">247</div>
+                            <div class="stat-label">Contributors</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">$24,580</div>
+                            <div class="stat-label">Raised</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">$42,150</div>
+                            <div class="stat-label">Matched</div>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 72%"></div>
+                    </div>
+                    <button class="btn btn-accent" style="width: 100%;">Contribute Now</button>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">Clean Water Initiative</div>
+                    <div class="project-category">Environment</div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">Providing sustainable clean water solutions to communities in need across Africa.</p>
+                    <div class="project-stats">
+                        <div class="stat">
+                            <div class="stat-value">189</div>
+                            <div class="stat-label">Contributors</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">$18,420</div>
+                            <div class="stat-label">Raised</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">$31,250</div>
+                            <div class="stat-label">Matched</div>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 58%"></div>
+                    </div>
+                    <button class="btn btn-accent" style="width: 100%;">Contribute Now</button>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">Renewable Energy Research</div>
+                    <div class="project-category">Technology</div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">Advancing research in affordable renewable energy solutions for developing nations.</p>
+                    <div class="project-stats">
+                        <div class="stat">
+                            <div class="stat-value">312</div>
+                            <div class="stat-label">Contributors</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">$31,750</div>
+                            <div class="stat-label">Raised</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">$54,320</div>
+                            <div class="stat-label">Matched</div>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 85%"></div>
+                    </div>
+                    <button class="btn btn-accent" style="width: 100%;">Contribute Now</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="funding-section">
+            <h2 class="funding-title">Fund a Project</h2>
+            <div class="funding-form">
+                <div class="form-group">
+                    <label for="project-select">Select Project</label>
+                    <select id="project-select" class="form-control">
+                        <option>Open Source Education</option>
+                        <option>Clean Water Initiative</option>
+                        <option>Renewable Energy Research</option>
+                        <option>Community Health Program</option>
+                        <option>Digital Literacy Project</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="contribution-amount">Contribution Amount ($)</label>
+                    <input type="number" id="contribution-amount" class="form-control" placeholder="Enter amount" min="1">
+                </div>
+                <div class="form-group">
+                    <label for="contributor-name">Your Name</label>
+                    <input type="text" id="contributor-name" class="form-control" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="contributor-email">Your Email</label>
+                    <input type="email" id="contributor-email" class="form-control" placeholder="Enter your email">
+                </div>
+            </div>
+            <button class="btn btn-accent" style="display: block; margin: 0 auto;">Submit Contribution</button>
+        </div>
+
+        <div class="calculator">
+            <h2 class="calculator-title">Quadratic Funding Calculator</h2>
+            <div class="calc-inputs">
+                <div class="form-group">
+                    <label for="contributors-count">Number of Contributors</label>
+                    <input type="number" id="contributors-count" class="form-control" value="50" min="1">
+                </div>
+                <div class="form-group">
+                    <label for="total-contributions">Total Contributions ($)</label>
+                    <input type="number" id="total-contributions" class="form-control" value="5000" min="1">
+                </div>
+            </div>
+            <div class="calc-result">
+                <p>Estimated Matching Funds</p>
+                <div class="result-value" id="matching-result">$8,660</div>
+                <p>Based on quadratic funding formula</p>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <h3>How Quadratic Funding Works</h3>
+            <p>Quadratic funding is a mathematically optimal mechanism for funding public goods in a democratic way. It works by calculating a project's matching funds based on the square of the sum of the square roots of contributions.</p>
+            <p>This means that projects with more diverse support (many small contributors) receive more matching funds than projects with the same total amount from fewer contributors.</p>
+            <p>The formula: Matching Funds = (Sum of √contributions)²</p>
+            <p>This creates incentives for projects to build broad community support rather than relying on a few large donors.</p>
+        </div>
+
+        <footer>
+            <p>Quadratic Finance Platform &copy; 2023 | Democratizing Funding for Public Goods</p>
+        </footer>
+    </div>
+
+    <script>
+        // Quadratic funding calculator
+        document.addEventListener('DOMContentLoaded', function() {
+            const contributorsInput = document.getElementById('contributors-count');
+            const contributionsInput = document.getElementById('total-contributions');
+            const resultElement = document.getElementById('matching-result');
+            
+            function calculateMatching() {
+                const contributors = parseInt(contributorsInput.value) || 0;
+                const totalContributions = parseInt(contributionsInput.value) || 0;
+                
+                if (contributors > 0 && totalContributions > 0) {
+                    // Simulate quadratic funding calculation
+                    // In a real implementation, this would use actual contribution data
+                    const avgContribution = totalContributions / contributors;
+                    const matchingFactor = Math.sqrt(contributors) * 1.5;
+                    const matchingFunds = Math.round(avgContribution * contributors * matchingFactor);
+                    
+                    resultElement.textContent = '$' + matchingFunds.toLocaleString();
+                }
+            }
+            
+            contributorsInput.addEventListener('input', calculateMatching);
+            contributionsInput.addEventListener('input', calculateMatching);
+            
+            // Initial calculation
+            calculateMatching();
+        });
+    </script>
+</body>
+</html>
